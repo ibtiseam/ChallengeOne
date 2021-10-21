@@ -99,7 +99,7 @@
                                     }
                                 } else {
                                     if (in_array($value, $sortable_fields) ) {
-                                        $sort .= $value . " asc ,";
+                                        $sort .= $value . " desc ,";
                                     }
                                 }
                             }
