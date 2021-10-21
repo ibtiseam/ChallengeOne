@@ -84,24 +84,43 @@
 
                        /**************Get employee by Job & Salary*****************/ 
                        public function sort() {
-                        // Create query
-                        $query = 'SELECT id, Job_title , Salary, Location, YearsExperience
-                                                  FROM ' . $this->table . ' 
-                                                 sort= ? order by ? desc
-                                                  ';    
+          
                 
-                        // Prepare statement
+                        $sortable_fields    = array_map('trim', explode(',', 'YearsExperience'));
+                        $custom_sort_fields = array_map('trim', explode(',', $_GET['sort']));
+                
+                        $sort = '';
+                
+                        foreach ($custom_sort_fields as $value) {
+                            if (!empty($value)) {
+                                if ($value[0] == '-'){
+                                    if (in_array(ltrim($value, '-'), $sortable_fields)) {
+                                        $sort .= ltrim($value, '-'). " desc ,";
+                                    }
+                                } else {
+                                    if (in_array($value, $sortable_fields) ) {
+                                        $sort .= $value . " asc ,";
+                                    }
+                                }
+                            }
+                        }
+                
+                        if ($sort != '') {
+                            $sort = ' order by ' . $sort;
+                            $sort = rtrim($sort, ',');
+                        }
+                
+                        $query = ' id, Job_title , Salary, Location, YearsExperience
+                        FROM ' . $this->table . $sort
+                               ;
+                
                         $stmt = $this->conn->prepare($query);
-                
-                        // Bind ID
-                        $stmt->bindParam(1,$this->sort);
-                
-                        // Execute query
                         $stmt->execute();
-                
-                        return $stmt;
-                  }
 
+                        return $stmt;
+                      
+                      } 
+                       
                      /**************Get employee by Job & Salary & Experience*****************/ 
                      public function read_single_employee() {
                         // Create query

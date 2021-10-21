@@ -25,24 +25,16 @@ if($num > 0) {
     
     $empl_arr = array();
 
-    while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-      extract($row);
-
-      $empl_item = array(
-        'id' => $id,
-        'Job_title' => $Job_title,
-        'Salary' => $Salary,
-        'Location' => $Location,
-        'YearsExperience' => $YearsExperience
-      );
-
-      // Push to "data"
-      array_push($empl_arr, $empl_item);
+    $employee = [];
+                
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+         $employee[] = $row;
     }
 
-    // Turn to JSON & output
+   $response = [];
+   $response['data'] =  $employee;
 
-    print_r(json_encode($empl_arr));
+   echo json_encode($response, JSON_PRETTY_PRINT) . "\n";
 
   } else {
     // No Employee
