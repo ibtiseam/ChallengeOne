@@ -1,12 +1,21 @@
 <?php 
   class Database {
-    // DB Params
-    private $host = 'localhost';
-    private $db_name = 'challenge';
-    private $username = 'root';
-    private $password = '';
-    private $conn;
 
+    /**** Development connection******/
+
+    // private $host = 'localhost';
+    // private $db_name = 'challenge';
+    // private $username = 'root';
+    // private $password = '';
+    // private $conn;
+
+   /***Remote DB connection***/
+
+    private $host = 'remotemysql.com';
+    private $db_name = 'KinMGoU174';
+    private $username = 'KinMGoU174';
+    private $password = 'xmX1VMB83n';
+    private $conn;
     // DB Connect
     public function connect() {
       $this->conn = null;
