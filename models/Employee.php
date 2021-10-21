@@ -87,7 +87,7 @@
                         // Create query
                         $query = 'SELECT id, Job_title , Salary, Location, YearsExperience
                                                   FROM ' . $this->table . ' 
-                                                 order by YearsExperience desc
+                                                 order by ? desc
                                                   ';    
                 
                         // Prepare statement
