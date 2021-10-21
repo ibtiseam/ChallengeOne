@@ -110,7 +110,7 @@
                             $sort = rtrim($sort, ',');
                         }
                 
-                        $query = ' id, Job_title , Salary, Location, YearsExperience
+                        $query = 'SELECT id, Job_title , Salary, Location, YearsExperience
                         FROM ' . $this->table . $sort
                                ;
                 
