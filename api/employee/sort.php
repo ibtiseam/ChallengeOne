@@ -25,14 +25,14 @@ if($num > 0) {
     
     $empl_arr = array();
 
-    $employee = [];
+    $employe = [];
                 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-         $employee[] = $row;
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+         $employe[] = $row;
     }
 
    $response = [];
-   $response['data'] =  $employee;
+   $response['data'] =  $employe;
 
    echo json_encode($response, JSON_PRETTY_PRINT) . "\n";
 
