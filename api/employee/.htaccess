@@ -1,1 +1,1 @@
-RewriteRule ^challengeOne/api/employee/read /challengeOne/api/employee/read.php
+RewriteRule ^read /read.php
