@@ -148,7 +148,7 @@
                 
                       
 
-                        $query =  'SELECT'  . $fields.  'FROM ' . $this->table  ;
+                        $query =  'SELECT * FROM ' . $this->table  ;
                 
                         $stmt = $this->conn->prepare($query);
                         $stmt->execute();
