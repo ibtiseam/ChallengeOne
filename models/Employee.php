@@ -125,7 +125,7 @@
                      public function read_single_employee() {
       
                       
-                        $selected_fields = array_map('trim', explode(',','Job_title'));
+                        $selected_fields = array_map('trim', explode(',','Job_title','Salary'));
                         $employee_fields = array_map('trim', explode(',', $_GET['fields']));
                         print( $employee_fields);
                 
