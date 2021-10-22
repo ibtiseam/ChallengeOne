@@ -13,7 +13,7 @@
   // Instantiate employee object
   $employee = new Employee($db);
 
-  // Get ID
+  // Get job ans saalary
   $employee->Job_title = isset($_GET['Job_title']) ? $_GET['Job_title'] : die();
   $employee->Salary = isset($_GET['Salary']) ? $_GET['Salary'] : die();
   // Get employee
