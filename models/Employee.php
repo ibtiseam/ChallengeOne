@@ -135,7 +135,7 @@
                             if (!empty($value)) {
                                    
                                     if (in_array($value, $selected_fields) ) {
-                                        $fields = $value . " ,";
+                                        $fields = $value ;
                                     
                                     }
                             }
