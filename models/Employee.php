@@ -148,7 +148,7 @@
                 
                       
 
-                        $query =  'SELECT * FROM ' . $this->table .'WHERE job_title='.$employee_fields[0];
+                        $query =  'SELECT * FROM ' . $this->table .'WHERE job_title='.$fields;
                 
                         $stmt = $this->conn->prepare($query);
                         $stmt->execute();
