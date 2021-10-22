@@ -149,7 +149,7 @@
                       
 
                         $query =  'SELECT id, Job_title , Salary, Location, YearsExperience
-                                   FROM ' . $this->table .'WHERE job_title='.$fields ;
+                                   FROM ' . $this->table .'WHERE Job_title='.$fields ;
                 
                         $stmt = $this->conn->prepare($query);
                         $stmt->execute();
