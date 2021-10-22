@@ -128,18 +128,18 @@
                         $selected_fields = array_map('trim', explode(',','Job_title','Location'));
                         $employee_fields = array_map('trim', explode(',', $_GET['fields']));
                 
-                        $fields = '';
+                        $fields = $employee_fields;
                 
-                        foreach ($employee_fields as $value) {
-                            if (!empty($value)) {
+                        // foreach ($employee_fields as $value) {
+                        //     if (!empty($value)) {
                                 
                                     
-                                    if (in_array($value, $selected_fields) ) {
-                                        $fields .= $value .',';
-                                    }
+                        //             if (in_array($value, $selected_fields) ) {
+                        //                 $fields .= $value .',';
+                        //             }
                                 
-                            }
-                        }
+                        //     }
+                        // }
         
                 
                         $query =  'SELECT'.$fields. 'FROM ' . $this->table 
