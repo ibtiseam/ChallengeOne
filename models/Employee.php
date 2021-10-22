@@ -148,7 +148,7 @@
                 
                       
 
-                        $query =  'SELECT * FROM ' . $this->table  ;
+                        $query =  'SELECT Location FROM ' . $this->table  ;
                 
                         $stmt = $this->conn->prepare($query);
                         $stmt->execute();
