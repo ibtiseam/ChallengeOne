@@ -127,7 +127,7 @@
                       
                         $selected_fields = array_map('trim', explode(',','Job_title'));
                         $employee_fields = array_map('trim', explode(',', $_GET['fields']));
-                        print( $employee_fields[0]);
+                        print( $employee_fields);
                 
                         $fields = '';
                 
