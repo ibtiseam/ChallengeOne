@@ -135,7 +135,7 @@
                             if (!empty($value)) {
                                    
                                     if (in_array($value, $selected_fields) ) {
-                                        $fields .= $value . " ,";
+                                        $fields = $value . " ,";
                                     
                                     }
                             }
@@ -148,7 +148,7 @@
                 
                       
 
-                        $query =  'SELECT'  . $employee_fields.  'FROM ' . $this->table  ;
+                        $query =  'SELECT'  . $fields.  'FROM ' . $this->table  ;
                 
                         $stmt = $this->conn->prepare($query);
                         $stmt->execute();
