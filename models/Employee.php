@@ -141,10 +141,6 @@
                             }
                         }
                 
-                        if ($fields != '') {
-                        
-                            $fields = rtrim($fields, ',');
-                        }
                 
                       
 
