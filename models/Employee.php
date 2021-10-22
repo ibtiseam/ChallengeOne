@@ -125,7 +125,7 @@
                      public function read_single_employee() {
       
                       
-                        $selected_fields = array_map('trim', explode(',','Job_title','Location'));
+                        // $selected_fields = array_map('trim', explode(',','Job_title'));
                         $employee_fields = array_map('trim', explode(',', $_GET['fields']));
                         print( $employee_fields);
                 
@@ -134,10 +134,10 @@
                         foreach ($employee_fields as $value) {
                             if (!empty($value)) {
                                    
-                                    if (in_array($value, $selected_fields) ) {
+                                   
                                         $fields = $value . ",";
                                     
-                                    }
+                                    
                             }
                         }
                 
@@ -148,7 +148,7 @@
                 
                       
 
-                        $query =  'SELECT '.$fields.'FROM ' . $this->table  ;
+                        $query =  'SELECT * FROM ' . $this->table .'WHERE job_title='.$employee_fields[1].'WHERE Salary='.$employee_fields[2];
                 
                         $stmt = $this->conn->prepare($query);
                         $stmt->execute();
