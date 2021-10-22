@@ -125,7 +125,7 @@
                      public function read_single_employee() {
       
                       
-                        $selected_fields    = array_map('trim', explode(',','Job_title','Location'));
+                        $selected_fields = array_map('trim', explode(',','Job_title','Location'));
                         $employee_fields = array_map('trim', explode(',', $_GET['fields']));
                 
                         $fields = '';
@@ -140,13 +140,9 @@
                                 
                             }
                         }
+        
                 
-                        if ($fields != '') {
-                            $fields = 'SELECT ' . $fields;
-                            $fields = rtrim($fields, ',');
-                        }
-                
-                        $query =  $fields. 'FROM ' . $this->table 
+                        $query =  'SELECT'.$fields. 'FROM ' . $this->table 
                                ;
                 
                         $stmt = $this->conn->prepare($query);
