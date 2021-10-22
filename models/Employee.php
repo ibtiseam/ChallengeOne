@@ -87,11 +87,11 @@
           
                 
                         $sortable_fields    = array_map('trim', explode(',', 'YearsExperience'));
-                        $custom_sort_fields = array_map('trim', explode(',', $_GET['sort']));
+                        $employee_sort_fields = array_map('trim', explode(',', $_GET['sort']));
                 
                         $sort = '';
                 
-                        foreach ($custom_sort_fields as $value) {
+                        foreach ($employee_sort_fields as $value) {
                             if (!empty($value)) {
                                 if ($value[0] == '-'){
                                     if (in_array(ltrim($value, '-'), $sortable_fields)) {
@@ -123,31 +123,38 @@
                        
                      /**************Get employee by Job & Salary & Experience*****************/ 
                      public function read_single_employee() {
-                        // Create query
-                        $query = 'SELECT id, Job_title , Salary, Location, YearsExperience
-                                                  FROM ' . $this->table . ' 
-                                                   WHERE
-                                                   Job_title = "Software Engineer III" and
-                                                    Salary =89000 and 
-                                                   Location="Oklahoma"
-                                                  ';    
+      
+                      
+                        $selected_fields    = array_map('trim', explode(',','Job_title', 'YearsExperience','Location', 'Salary'));
+                        $employee_fields = array_map('trim', explode(',', $_GET['fields']));
                 
-                        // Prepare statement
+                        $fields = '';
+                
+                        foreach ($employee_fields as $value) {
+                            if (!empty($value)) {
+                                
+                                    
+                                    if (in_array($value, $selected_fields) ) {
+                                        $fields .= $value .',';
+                                    }
+                                
+                            }
+                        }
+                
+                        if ($fields != '') {
+                            $fields = 'SELECT ' . $fields;
+                            $fields = rtrim($fields, ',');
+                        }
+                
+                        $query =  $fields. 'FROM ' . $this->table 
+                               ;
+                
                         $stmt = $this->conn->prepare($query);
-                
-                        // Bind ID
-                        $stmt->bindParam(1,$this->fields);
-                
-                         // Execute query
                         $stmt->execute();
 
-                        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                        // Set properties
-                        $this->Job_title = $row['Job_title'];
-                        $this->Salary = $row['Salary'];
-                        $this->Location = $row['Location'];
-                        $this->YearsExperience = $row['YearsExperience'];
+                        return $stmt;
+                      
+                      
                      }
                    
                   

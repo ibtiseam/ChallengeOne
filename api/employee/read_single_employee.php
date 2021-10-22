@@ -16,15 +16,29 @@
  
 
   // Get employee
-  $employee->read_single_employee();
+  $result = $employee->read_single_employee();
 
-  // Create array
-  $employee_arr = array(
-    'Job_title' => $employee->Job_title,
-    'Salary' => $employee->Salary,
-    'Location' => $employee->Location,
-    'YearsExperience' => $employee->YearsExperience
-  );
+    // Get row count
+    $num = $result->rowCount();
+// Check if any empl
+if($num > 0) {
+    
+    $empl_arr = array();
 
-  // Make JSON
-  print_r(json_encode($employee_arr));
+    $employe = [];
+                
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+         $employe[] = $row;
+    }
+
+   $response = [];
+   $response['data'] =  $employe;
+
+   echo json_encode($response, JSON_PRETTY_PRINT) . "\n";
+
+  } else {
+    // No Employee
+    echo json_encode(
+      array('message' => 'No Employee Found')
+    );
+  }
