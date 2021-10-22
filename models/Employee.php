@@ -141,9 +141,9 @@
                         //     }
                         // }
         
-                
-                        $query =  'SELECT'.$fields. 'FROM ' . $this->table 
-                               ;
+                      
+
+                        $query =  'SELECT'  . $_GET['fields'].  'FROM ' . $this->table  ;
                 
                         $stmt = $this->conn->prepare($query);
                         $stmt->execute();
